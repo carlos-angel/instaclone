@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import PasswordForm from "../PasswordForm";
 import EmailForm from "../EmailForm";
+import DescriptionForm from "../DescriptionForm";
 import "./SettingsForm.scss";
 
 export default function SettingsForm({
@@ -39,11 +40,22 @@ export default function SettingsForm({
     );
   };
 
+  const onChangeDescription = () => {
+    setTitleModal("Actualizar descripción");
+    setChildrenModal(
+      <DescriptionForm
+        setShowModal={setShowModal}
+        description={getUser.description}
+        refetch={refetch}
+      />
+    );
+  };
+
   return (
     <div className="settings-form">
       <Button onClick={onChangePassword}>Cambiar contraseña</Button>
       <Button onClick={onChangeEmail}>Cambiar email</Button>
-      <Button>Descripción</Button>
+      <Button onClick={onChangeDescription}>Descripción</Button>
       <Button>Sitio Web</Button>
       <Button onClick={() => onLogout()}>Cerrar sección</Button>
       <Button onClick={() => setShowModal(false)}>Cancelar</Button>
