@@ -4,12 +4,15 @@ import useAth from "../../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
 import PasswordForm from "../PasswordForm";
+import EmailForm from "../EmailForm";
 import "./SettingsForm.scss";
 
 export default function SettingsForm({
   setShowModal,
   setTitleModal,
   setChildrenModal,
+  getUser,
+  refetch,
 }) {
   const { logout } = useAth();
   const history = useHistory();
@@ -25,10 +28,21 @@ export default function SettingsForm({
     setChildrenModal(<PasswordForm onLogout={onLogout} />);
   };
 
+  const onChangeEmail = () => {
+    setTitleModal("cambiar email");
+    setChildrenModal(
+      <EmailForm
+        setShowModal={setShowModal}
+        currentEmail={getUser.email}
+        refetch={refetch}
+      />
+    );
+  };
+
   return (
     <div className="settings-form">
       <Button onClick={onChangePassword}>Cambiar contraseña</Button>
-      <Button>Cambiar email</Button>
+      <Button onClick={onChangeEmail}>Cambiar email</Button>
       <Button>Descripción</Button>
       <Button>Sitio Web</Button>
       <Button onClick={() => onLogout()}>Cerrar sección</Button>
