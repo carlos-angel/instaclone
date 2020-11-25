@@ -3,7 +3,7 @@ import { ApolloProvider } from "@apollo/client";
 import { ToastContainer } from "react-toastify";
 import client from "./config/apollo";
 import { Auth } from "./pages";
-import { getToken, decodeToken } from "./utils/token";
+import { getToken, decodeToken, removeToken } from "./utils/token";
 import AuthContext from "./context/AuthContext";
 import Navigation from "./routes/Navigation";
 
@@ -20,7 +20,8 @@ function App() {
   }, []);
 
   const logout = () => {
-    console.log("cerrar session");
+    removeToken();
+    setAuth(null);
   };
 
   const setUser = (user) => {

@@ -7,6 +7,8 @@ import AvatarForm from "../AvatarForm";
 import UserNotFound from "../../UserNotFound";
 import ModalBasic from "../../Modal/ModalBasic";
 import ImageNotFound from "../../../assets/png/avatar.png";
+import HeaderProfile from "./HeaderProfile";
+import SettingsForm from "../SettingsForm";
 import "./Profile.scss";
 
 export default function Profile({ username }) {
@@ -35,7 +37,11 @@ export default function Profile({ username }) {
         );
         setShowModal(true);
         break;
-
+      case "settings":
+        setTitleModal("Ajustes");
+        setChildrenModal(<SettingsForm setShowModal={setShowModal} />);
+        setShowModal(true);
+        break;
       default:
         break;
     }
@@ -52,7 +58,11 @@ export default function Profile({ username }) {
           />
         </Grid.Column>
         <Grid.Column width={11} className="profile__right">
-          <div>HeaderProfile</div>
+          <HeaderProfile
+            username={username}
+            auth={auth}
+            handleModal={handleModal}
+          />
           <div>Followers</div>
           <div className="other">
             <p className="name">{getUser.name}</p>
