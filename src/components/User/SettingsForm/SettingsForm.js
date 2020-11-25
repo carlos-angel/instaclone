@@ -6,6 +6,7 @@ import { useApolloClient } from "@apollo/client";
 import PasswordForm from "../PasswordForm";
 import EmailForm from "../EmailForm";
 import DescriptionForm from "../DescriptionForm";
+import WebsiteForm from "../WebsiteForm";
 import "./SettingsForm.scss";
 
 export default function SettingsForm({
@@ -51,12 +52,23 @@ export default function SettingsForm({
     );
   };
 
+  const onChangeWebsite = () => {
+    setTitleModal("Actualizar Website");
+    setChildrenModal(
+      <WebsiteForm
+        setShowModal={setShowModal}
+        siteWeb={getUser.siteWeb}
+        refetch={refetch}
+      />
+    );
+  };
+
   return (
     <div className="settings-form">
       <Button onClick={onChangePassword}>Cambiar contraseña</Button>
       <Button onClick={onChangeEmail}>Cambiar email</Button>
       <Button onClick={onChangeDescription}>Descripción</Button>
-      <Button>Sitio Web</Button>
+      <Button onClick={onChangeWebsite}>Sitio Web</Button>
       <Button onClick={() => onLogout()}>Cerrar sección</Button>
       <Button onClick={() => setShowModal(false)}>Cancelar</Button>
     </div>
