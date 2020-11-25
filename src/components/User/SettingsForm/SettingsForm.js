@@ -3,9 +3,14 @@ import { Button } from "semantic-ui-react";
 import useAth from "../../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import { useApolloClient } from "@apollo/client";
+import PasswordForm from "../PasswordForm";
 import "./SettingsForm.scss";
 
-export default function SettingsForm({ setShowModal }) {
+export default function SettingsForm({
+  setShowModal,
+  setTitleModal,
+  setChildrenModal,
+}) {
   const { logout } = useAth();
   const history = useHistory();
   const client = useApolloClient();
@@ -15,9 +20,14 @@ export default function SettingsForm({ setShowModal }) {
     history.push("/");
   };
 
+  const onChangePassword = () => {
+    setTitleModal("cambiar contraseña");
+    setChildrenModal(<PasswordForm onLogout={onLogout} />);
+  };
+
   return (
     <div className="settings-form">
-      <Button>Cambiar contraseña</Button>
+      <Button onClick={onChangePassword}>Cambiar contraseña</Button>
       <Button>Cambiar email</Button>
       <Button>Descripción</Button>
       <Button>Sitio Web</Button>
