@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_FOLLOWERS } from "../../../../gql/follow";
+import { GET_FOLLOWERS, GET_FOLLOWEDS } from "../../../../gql/follow";
 import { size } from "lodash";
 import ModalBasic from "../../../Modal/ModalBasic";
 import ListUsers from "../../ListUsers";
@@ -22,21 +22,46 @@ export default function Follow({ username }) {
     },
   });
 
+  const {
+    data: dataFolloweds,
+    loading: loadingFolloweds,
+    startPolling: startPollingFolloweds,
+    stopPolling: stopPollingFolloweds,
+  } = useQuery(GET_FOLLOWEDS, {
+    variables: {
+      username,
+    },
+  });
+
   useEffect(() => {
     startPollingFollowers(1000);
     return () => stopPollingFollowers();
   }, [startPollingFollowers, stopPollingFollowers]);
 
-  if (loadingFollowers) {
+  useEffect(() => {
+    startPollingFolloweds(1000);
+    return () => stopPollingFolloweds();
+  }, [startPollingFolloweds, stopPollingFolloweds]);
+
+  if (loadingFollowers || loadingFolloweds) {
     return null;
   }
   const { getFollowers } = dataFollowers;
+  const { getFolloweds } = dataFolloweds;
 
   const openFollowers = () => {
     setShowModal(true);
     setTitleModal("Seguidores");
     setChildrenModal(
       <ListUsers users={getFollowers} setShowModal={setShowModal} />
+    );
+  };
+
+  const openFolloweds = () => {
+    setShowModal(true);
+    setTitleModal("seguidos");
+    setChildrenModal(
+      <ListUsers users={getFolloweds} setShowModal={setShowModal} />
     );
   };
 
@@ -51,9 +76,9 @@ export default function Follow({ username }) {
           {" "}
           <span>{size(getFollowers)}</span> seguidores
         </p>
-        <p className="link">
+        <p className="link" onClick={openFolloweds}>
           {" "}
-          <span>**</span> seguidos
+          <span>{size(getFolloweds)}</span> seguidos
         </p>
       </div>
       <ModalBasic
