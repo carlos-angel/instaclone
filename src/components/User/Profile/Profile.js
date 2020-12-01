@@ -9,6 +9,7 @@ import ModalBasic from "../../Modal/ModalBasic";
 import ImageNotFound from "../../../assets/png/avatar.png";
 import HeaderProfile from "./HeaderProfile";
 import SettingsForm from "../SettingsForm";
+import Followers from "./Followers";
 import "./Profile.scss";
 
 export default function Profile({ username }) {
@@ -71,7 +72,7 @@ export default function Profile({ username }) {
             auth={auth}
             handleModal={handleModal}
           />
-          <div>Followers</div>
+          <Followers username={username} />
           <div className="other">
             <p className="name">{getUser.name}</p>
             {getUser.siteWeb && (
