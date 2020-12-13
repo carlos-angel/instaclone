@@ -6,7 +6,7 @@ import ModalBasic from "../../../Modal/ModalBasic";
 import ListUsers from "../../ListUsers";
 import "./Followers.scss";
 
-export default function Follow({ username }) {
+export default function Follow({ username, totalPublications }) {
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState("");
   const [childrenModal, setChildrenModal] = useState(null);
@@ -70,7 +70,7 @@ export default function Follow({ username }) {
       <div className="followers">
         <p>
           {" "}
-          <span>**</span> publicaciones
+          <span>{totalPublications}</span> publicaciones
         </p>
         <p className="link" onClick={openFollowers}>
           {" "}

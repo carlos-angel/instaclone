@@ -12,7 +12,7 @@ import SettingsForm from "../SettingsForm";
 import Followers from "./Followers";
 import "./Profile.scss";
 
-export default function Profile({ username }) {
+export default function Profile({ username, totalPublications }) {
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState("");
   const [childrenModal, setChildrenModal] = useState(false);
@@ -72,7 +72,10 @@ export default function Profile({ username }) {
             auth={auth}
             handleModal={handleModal}
           />
-          <Followers username={username} />
+          <Followers
+            username={username}
+            totalPublications={totalPublications}
+          />
           <div className="other">
             <p className="name">{getUser.name}</p>
             {getUser.siteWeb && (
