@@ -14,23 +14,23 @@ export default function AvatarForm({ setShowModal, auth }) {
       const { getUser } = cache.readQuery({
         query: GET_USER,
         variables: {
-          username: auth.username,
-        },
+          username: auth.username
+        }
       });
       // reescribir cache
       cache.writeQuery({
         query: GET_USER,
         variables: {
-          username: auth.username,
+          username: auth.username
         },
         data: {
           getUser: {
             ...getUser,
-            avatar: updateAvatar.urlAvatar,
-          },
-        },
+            avatar: updateAvatar.urlAvatar
+          }
+        }
       });
-    },
+    }
   });
 
   const [deleteAvatar] = useMutation(DELETE_AVATAR, {
@@ -38,8 +38,8 @@ export default function AvatarForm({ setShowModal, auth }) {
       const { getUser } = cache.readQuery({
         query: GET_USER,
         variables: {
-          username: auth.username,
-        },
+          username: auth.username
+        }
       });
 
       cache.writeQuery({
@@ -48,14 +48,14 @@ export default function AvatarForm({ setShowModal, auth }) {
         data: {
           getUser: {
             ...getUser,
-            avatar: "",
-          },
-        },
+            avatar: ""
+          }
+        }
       });
-    },
+    }
   });
 
-  const onDrop = useCallback(async (acceptedFile) => {
+  const onDrop = useCallback(async acceptedFile => {
     const file = acceptedFile[0];
     try {
       setLoading(true);
@@ -67,7 +67,7 @@ export default function AvatarForm({ setShowModal, auth }) {
       }
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      toast.warning("Error al actualizar el avatar");
     }
   }, []);
 
@@ -75,7 +75,7 @@ export default function AvatarForm({ setShowModal, auth }) {
     accept: "image/jpeg, image/jpg, image/png",
     noKeyboard: true,
     multiple: false,
-    onDrop,
+    onDrop
   });
 
   const onDeleteAvatar = async () => {

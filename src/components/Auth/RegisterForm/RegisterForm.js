@@ -26,26 +26,25 @@ export default function RegisterForm({ setShowLogin }) {
       password: Yup.string().required("La contraseña es obligatoria"),
       repeatPassword: Yup.string()
         .required("La contraseña es obligatoria")
-        .oneOf([Yup.ref("password")], "Las contraseñas no coinciden entre si"),
+        .oneOf([Yup.ref("password")], "Las contraseñas no coinciden entre si")
     }),
-    onSubmit: async (formData) => {
+    onSubmit: async formData => {
       try {
         const newUser = formData;
         delete newUser.repeatPassword;
 
         await register({
           variables: {
-            input: newUser,
-          },
+            input: newUser
+          }
         });
 
         toast.success("USuario registrado correctamente");
         setShowLogin(true);
       } catch (error) {
         toast.error(error.message);
-        console.log(error.message);
       }
-    },
+    }
   });
 
   return (
@@ -110,6 +109,6 @@ function initialValues() {
     email: "",
     username: "",
     password: "",
-    repeatPassword: "",
+    repeatPassword: ""
   };
 }

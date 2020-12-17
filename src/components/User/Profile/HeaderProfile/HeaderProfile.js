@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/client";
 import { IS_FOLLOW, FOLLOW, UN_FOLLOW } from "../../../../gql/follow";
+import { toast } from "react-toastify";
 import "./HeaderProfile.scss";
 
 export default function HeaderProfile({ username, auth, handleModal }) {
@@ -10,8 +11,8 @@ export default function HeaderProfile({ username, auth, handleModal }) {
 
   const { data, loading, refetch } = useQuery(IS_FOLLOW, {
     variables: {
-      username,
-    },
+      username
+    }
   });
 
   const buttonFollow = () => {
@@ -34,12 +35,12 @@ export default function HeaderProfile({ username, auth, handleModal }) {
     try {
       await follow({
         variables: {
-          username,
-        },
+          username
+        }
       });
       refetch();
     } catch (error) {
-      console.error(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -47,12 +48,12 @@ export default function HeaderProfile({ username, auth, handleModal }) {
     try {
       await unFollow({
         variables: {
-          username,
-        },
+          username
+        }
       });
       refetch();
     } catch (error) {
-      console.error(error.message);
+      toast.error(error.message);
     }
   };
 

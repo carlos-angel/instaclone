@@ -7,7 +7,6 @@ import "./Home.scss";
 
 export default function Home() {
   const auth = useAuth();
-  console.log(auth);
   return (
     <Grid className="home">
       <Grid.Column className="home__left" width={11}>

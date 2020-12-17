@@ -25,8 +25,6 @@ export default function Comments({ publication }) {
 
   const { getComments } = data;
 
-  console.log("comments", getComments);
-
   return (
     <div className="comments">
       {map(getComments, (comment, index) => (

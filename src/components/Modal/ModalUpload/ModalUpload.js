@@ -11,21 +11,20 @@ export default function ModalUpload({ show, setShow }) {
   const [isLoading, setIsLoading] = useState(false);
   const [publish] = useMutation(PUBLISH);
 
-  const onDrop = useCallback((acceptedFile) => {
+  const onDrop = useCallback(acceptedFile => {
     const file = acceptedFile[0];
     setFileUpload({
       type: "image",
       file,
-      preview: URL.createObjectURL(file),
+      preview: URL.createObjectURL(file)
     });
-    console.log(file);
   });
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/jpeg, image/jpg, image/png",
     noKeyboard: true,
     multiple: false,
-    onDrop,
+    onDrop
   });
 
   const onClose = () => {
@@ -38,8 +37,8 @@ export default function ModalUpload({ show, setShow }) {
       setIsLoading(true);
       const { data } = await publish({
         variables: {
-          file: fileUpload.file,
-        },
+          file: fileUpload.file
+        }
       });
 
       if (!data.publish.status) {
