@@ -4,7 +4,7 @@ import { setContext } from "apollo-link-context";
 import { getToken } from "../utils/token";
 
 const httpLink = createUploadLink({
-  uri: "http://localhost:4000/",
+  uri: "https://carlos-instaclone-server.herokuapp.com/"
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -13,15 +13,15 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      Authorization: token ? `Bearer ${token}` : "",
-    },
+      Authorization: token ? `Bearer ${token}` : ""
+    }
   };
 });
 
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
+  link: authLink.concat(httpLink)
 });
 
 export default client;
