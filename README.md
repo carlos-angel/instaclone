@@ -3,7 +3,8 @@ Cliente frontend de una red social como instagram.
 ```
 Utiliza el backend instaclone-server el cual que puedes clonar en el siguiente enlace
 ```
-[instaclone-server](https://github.com/Carlos-Angel/instaclone-server)
+
+puedes ver la demo del cliente entrando en la [demo de la aplicación](https://carlos-instaclone.netlify.app/)
 ## Comenzando
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de producción y desarrollo.
