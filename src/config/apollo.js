@@ -1,10 +1,11 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { createUploadLink } from "apollo-upload-client";
-import { setContext } from "apollo-link-context";
-import { getToken } from "../utils/token";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
+import { setContext } from 'apollo-link-context';
+import { getToken } from '../utils/token';
+import URI from './config';
 
 const httpLink = createUploadLink({
-  uri: "https://carlos-instaclone-server.herokuapp.com/"
+  uri: URI
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -13,7 +14,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      Authorization: token ? `Bearer ${token}` : ""
+      Authorization: token ? `Bearer ${token}` : ''
     }
   };
 });
