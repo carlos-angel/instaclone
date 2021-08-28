@@ -1,12 +1,11 @@
-import React from "react";
-import { useMutation } from "@apollo/client";
-import { UPDATE_USER } from "../../../gql/user";
-import { Form, TextArea, Button } from "semantic-ui-react";
-import { useFormik } from "formik";
-import { toast } from "react-toastify";
-import * as Yup from "yup";
-import "./DescriptionForm.scss";
-import { update } from "lodash";
+import React from 'react';
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER } from '../../../gql/user';
+import { Form, TextArea, Button } from 'semantic-ui-react';
+import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+import './DescriptionForm.scss';
 
 export default function DescriptionForm({
   setShowModal,
@@ -16,7 +15,7 @@ export default function DescriptionForm({
   const [updateUser] = useMutation(UPDATE_USER);
 
   const formik = useFormik({
-    initialValues: { description: description || "" },
+    initialValues: { description: description || '' },
     validationSchema: Yup.object({
       description: Yup.string().required(),
     }),
@@ -28,27 +27,27 @@ export default function DescriptionForm({
           },
         });
         if (!data.updateUser) {
-          toast.error("Error al actualizar descripción");
+          toast.error('Error al actualizar descripción');
         } else {
-          toast.success("Descripción actualizada");
+          toast.success('Descripción actualizada');
           refetch();
           setShowModal(false);
         }
       } catch (error) {
-        toast.error("Error al actualizar descripción");
+        toast.error('Error al actualizar descripción');
       }
     },
   });
 
   return (
-    <Form className="description-form" onSubmit={formik.handleSubmit}>
+    <Form className='description-form' onSubmit={formik.handleSubmit}>
       <TextArea
-        name="description"
+        name='description'
         value={formik.values.description}
         onChange={formik.handleChange}
-        className={formik.errors.description && "error"}
+        className={formik.errors.description && 'error'}
       />
-      <Button type="submit" className="btn-submit">
+      <Button type='submit' className='btn-submit'>
         Actualizar
       </Button>
     </Form>
