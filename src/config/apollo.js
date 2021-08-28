@@ -2,10 +2,9 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from 'apollo-link-context';
 import { getToken } from '../utils/token';
-import URI from './config';
 
 const httpLink = createUploadLink({
-  uri: URI
+  uri: process.env.REACT_APP_URI_SERVER || 'http://localhost:4000/',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -14,15 +13,15 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      Authorization: token ? `Bearer ${token}` : ''
-    }
+      Authorization: token ? `Bearer ${token}` : '',
+    },
   };
 });
 
 const client = new ApolloClient({
   connectToDevTools: true,
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink)
+  link: authLink.concat(httpLink),
 });
 
 export default client;
