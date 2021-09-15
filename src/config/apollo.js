@@ -4,7 +4,7 @@ import { setContext } from 'apollo-link-context';
 import { getToken } from 'utils/token';
 
 const httpLink = createUploadLink({
-  uri: process.env.REACT_APP_URI_SERVER || 'http://localhost:4000/',
+  uri: process.env.REACT_APP_URI_SERVER,
 });
 
 const authLink = setContext((_, { headers }) => {
