@@ -1,15 +1,15 @@
-import LayoutBasic from "../layouts/LayoutBasic";
-import { Home, Error, User } from "../pages";
+import LayoutBasic from 'layouts/LayoutBasic';
+import { Home, Error, User } from 'pages';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     layout: LayoutBasic,
     component: Home,
     exact: true,
   },
   {
-    path: "/:username",
+    path: '/:username',
     layout: LayoutBasic,
     component: User,
     exact: true,
