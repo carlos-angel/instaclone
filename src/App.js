@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { ApolloProvider } from "@apollo/client";
-import { ToastContainer } from "react-toastify";
-import client from "./config/apollo";
-import { Auth } from "./pages";
-import { getToken, decodeToken, removeToken } from "./utils/token";
-import AuthContext from "./context/AuthContext";
-import Navigation from "./routes/Navigation";
+import React, { useState, useEffect, useMemo } from 'react';
+import { ApolloProvider } from '@apollo/client';
+import { ToastContainer } from 'react-toastify';
+import client from 'config/apollo';
+import { Auth } from 'pages';
+import { getToken, decodeToken, removeToken } from 'utils/token';
+import AuthContext from 'context/AuthContext';
+import Navigation from 'routes/Navigation';
 
 function App() {
   const [auth, setAuth] = useState(undefined);
@@ -34,7 +34,7 @@ function App() {
       logout,
       setUser,
     }),
-    [auth]
+    [auth],
   );
 
   if (auth === undefined) return null;
@@ -44,7 +44,7 @@ function App() {
       <AuthContext.Provider value={authData}>
         {!auth ? <Auth /> : <Navigation />}
         <ToastContainer
-          position="top-right"
+          position='top-right'
           autoClose={5000}
           hideProgressBar
           newestOnTop
