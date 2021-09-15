@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { Container, Image } from "semantic-ui-react";
-import { RegisterForm, LoginForm } from "../../components/Auth";
-import instaclone from "../../assets/png/instaclone.png";
-import "./Auth.scss";
+import React, { useState } from 'react';
+import { Container, Image } from 'semantic-ui-react';
+import { RegisterForm, LoginForm } from 'components/Auth';
+import instaclone from 'assets/png/instaclone.png';
+import './Auth.scss';
 
 export default function Auth() {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <Container fluid className="auth">
+    <Container fluid className='auth'>
       <Image src={instaclone} />
-      <div className="container-form">
+      <div className='container-form'>
         {showLogin ? (
           <LoginForm />
         ) : (
@@ -18,7 +18,7 @@ export default function Auth() {
         )}
       </div>
 
-      <div className="change-form">
+      <div className='change-form'>
         <p>
           {showLogin ? (
             <>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import Feed from '../../components/Home/Feed';
-import UsersNotFolloweds from '../../components/Home/UsersNotFolloweds';
+import Feed from 'components/Home/Feed';
+import UsersNotFolloweds from 'components/Home/UsersNotFolloweds';
 import './Home.scss';
 
 export default function Home() {

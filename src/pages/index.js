@@ -1,5 +1,5 @@
-import Auth from "./Auth";
-import User from "./User";
-import Error from "./Error";
-import Home from "./Home";
+import Auth from 'pages/Auth';
+import User from 'pages/User';
+import Error from 'pages/Error';
+import Home from 'pages/Home';
 export { Auth, User, Error, Home };

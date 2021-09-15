@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Profile from "../components/User/Profile";
-import Publications from "../components/Publications";
-import { useQuery } from "@apollo/client";
-import { GET_PUBLICATIONS } from "../gql/publication";
-import { size } from "lodash";
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Profile from 'components/User/Profile';
+import Publications from 'components/Publications';
+import { useQuery } from '@apollo/client';
+import { GET_PUBLICATIONS } from 'gql/publication';
+import { size } from 'lodash';
 
 export default function User() {
   const { username } = useParams();
@@ -14,7 +14,7 @@ export default function User() {
       variables: {
         username,
       },
-    }
+    },
   );
 
   useEffect(() => {
