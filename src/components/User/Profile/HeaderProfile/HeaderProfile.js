@@ -1,9 +1,9 @@
-import React from "react";
-import { Button } from "semantic-ui-react";
-import { useQuery, useMutation } from "@apollo/client";
-import { IS_FOLLOW, FOLLOW, UN_FOLLOW } from "../../../../gql/follow";
-import { toast } from "react-toastify";
-import "./HeaderProfile.scss";
+import React from 'react';
+import { Button } from 'semantic-ui-react';
+import { useQuery, useMutation } from '@apollo/client';
+import { IS_FOLLOW, FOLLOW, UN_FOLLOW } from 'gql/follow';
+import { toast } from 'react-toastify';
+import './HeaderProfile.scss';
 
 export default function HeaderProfile({ username, auth, handleModal }) {
   const [follow] = useMutation(FOLLOW);
@@ -11,20 +11,20 @@ export default function HeaderProfile({ username, auth, handleModal }) {
 
   const { data, loading, refetch } = useQuery(IS_FOLLOW, {
     variables: {
-      username
-    }
+      username,
+    },
   });
 
   const buttonFollow = () => {
     if (data.isFollow) {
       return (
-        <Button className="btn-danger" onClick={onUnFollow}>
+        <Button className='btn-danger' onClick={onUnFollow}>
           Dejar de seguir
         </Button>
       );
     } else {
       return (
-        <Button className="btn-action" onClick={onFollow}>
+        <Button className='btn-action' onClick={onFollow}>
           Seguir
         </Button>
       );
@@ -35,8 +35,8 @@ export default function HeaderProfile({ username, auth, handleModal }) {
     try {
       await follow({
         variables: {
-          username
-        }
+          username,
+        },
       });
       refetch();
     } catch (error) {
@@ -48,8 +48,8 @@ export default function HeaderProfile({ username, auth, handleModal }) {
     try {
       await unFollow({
         variables: {
-          username
-        }
+          username,
+        },
       });
       refetch();
     } catch (error) {
@@ -58,12 +58,12 @@ export default function HeaderProfile({ username, auth, handleModal }) {
   };
 
   return (
-    <div className="header-profile">
+    <div className='header-profile'>
       <h2>{username}</h2>
       {username === auth.username ? (
         <Button
           onClick={() => {
-            handleModal("settings");
+            handleModal('settings');
           }}
         >
           Ajustes

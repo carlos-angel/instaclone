@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { map } from "lodash";
-import { Image } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_COMMENTS } from "../../../../gql/comment";
-import ImageNoFound from "../../../../assets/png/avatar.png";
-import "./Comments.scss";
+import React, { useEffect } from 'react';
+import { map } from 'lodash';
+import { Image } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_COMMENTS } from 'gql/comment';
+import ImageNoFound from 'assets/png/avatar.png';
+import './Comments.scss';
 
 export default function Comments({ publication }) {
   const { data, loading, startPolling, stopPolling } = useQuery(GET_COMMENTS, {
     variables: {
-      idPublication: publication.id
-    }
+      idPublication: publication.id,
+    },
   });
 
   useEffect(() => {
@@ -26,12 +26,12 @@ export default function Comments({ publication }) {
   const { getComments } = data;
 
   return (
-    <div className="comments">
+    <div className='comments'>
       {map(getComments, (comment, index) => (
         <Link
           key={index}
           to={`/${comment.idUser.username}`}
-          className="comment"
+          className='comment'
         >
           <Image src={comment.idUser.avatar || ImageNoFound} avatar />
           <div>

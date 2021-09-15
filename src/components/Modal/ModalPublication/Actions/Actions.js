@@ -1,13 +1,8 @@
-import React, { useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import {
-  ADD_LIKE,
-  IS_LIKE,
-  DELETE_LIKE,
-  COUNT_LIKES
-} from "../../../../gql/like";
-import { Icon } from "semantic-ui-react";
-import "./Actions.scss";
+import React, { useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_LIKE, IS_LIKE, DELETE_LIKE, COUNT_LIKES } from 'gql/like';
+import { Icon } from 'semantic-ui-react';
+import './Actions.scss';
 
 export default function Actions({ publication }) {
   const [loadingAction, setLoadingAction] = useState(false);
@@ -16,14 +11,14 @@ export default function Actions({ publication }) {
   const [deleteLike] = useMutation(DELETE_LIKE);
 
   const { data, loading, refetch } = useQuery(IS_LIKE, {
-    variables: { idPublication: publication.id }
+    variables: { idPublication: publication.id },
   });
   const {
     data: dataCount,
     loading: loadingCount,
-    refetch: refetchCount
+    refetch: refetchCount,
   } = useQuery(COUNT_LIKES, {
-    variables: { idPublication: publication.id }
+    variables: { idPublication: publication.id },
   });
 
   const onAction = () => {
@@ -41,8 +36,8 @@ export default function Actions({ publication }) {
     try {
       await addLike({
         variables: {
-          idPublication: publication.id
-        }
+          idPublication: publication.id,
+        },
       });
       refetch();
       refetchCount();
@@ -55,8 +50,8 @@ export default function Actions({ publication }) {
     try {
       await deleteLike({
         variables: {
-          idPublication: publication.id
-        }
+          idPublication: publication.id,
+        },
       });
       refetch();
       refetchCount();
@@ -71,13 +66,13 @@ export default function Actions({ publication }) {
   const { isLike } = data;
   const { countLikes } = dataCount;
   return (
-    <div className="actions">
+    <div className='actions'>
       <Icon
-        className={isLike ? "like active" : "like"}
-        name={isLike ? "heart" : "heart outline"}
+        className={isLike ? 'like active' : 'like'}
+        name={isLike ? 'heart' : 'heart outline'}
         onClick={onAction}
       />
-      {countLikes} {countLikes === 1 ? "Like" : "Likes"}
+      {countLikes} {countLikes === 1 ? 'Like' : 'Likes'}
     </div>
   );
 }

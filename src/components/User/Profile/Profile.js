@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Grid, Image } from 'semantic-ui-react';
 import { useQuery } from '@apollo/client';
-import { GET_USER } from '../../../gql/user';
-import userAuth from '../../../hooks/useAuth';
-import AvatarForm from '../AvatarForm';
-import UserNotFound from '../../UserNotFound';
-import ModalBasic from '../../Modal/ModalBasic';
-import ImageNotFound from '../../../assets/png/avatar.png';
-import HeaderProfile from './HeaderProfile';
-import SettingsForm from '../SettingsForm';
-import Followers from './Followers';
+import { GET_USER } from 'gql/user';
+import userAuth from 'hooks/useAuth';
+import AvatarForm from 'components/User/AvatarForm';
+import UserNotFound from 'components/UserNotFound';
+import ModalBasic from 'components/Modal/ModalBasic';
+import ImageNotFound from 'assets/png/avatar.png';
+import HeaderProfile from 'components/User/Profile/HeaderProfile';
+import SettingsForm from 'components/User/SettingsForm';
+import Followers from 'components/User/Profile/Followers';
 import './Profile.scss';
 
 export default function Profile({ username, totalPublications }) {

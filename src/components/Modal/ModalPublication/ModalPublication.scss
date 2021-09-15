@@ -1,21 +1,20 @@
-@import "../../../scss/index.scss";
+@import 'scss/index.scss';
 
-.modal-publication{
+.modal-publication {
   height: 520px !important;
-  .ui.grid{
+  .ui.grid {
     margin: 0;
     height: 100%;
   }
 
-  &__left{
+  &__left {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
   }
 
-  &__right{
+  &__right {
     padding: 0 !important;
     height: 100%;
   }
-
 }

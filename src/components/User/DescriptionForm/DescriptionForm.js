@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../../../gql/user';
+import { UPDATE_USER } from 'gql/user';
 import { Form, TextArea, Button } from 'semantic-ui-react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';

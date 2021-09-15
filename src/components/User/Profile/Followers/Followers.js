@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_FOLLOWERS, GET_FOLLOWEDS } from "../../../../gql/follow";
-import { size } from "lodash";
-import ModalBasic from "../../../Modal/ModalBasic";
-import ListUsers from "../../ListUsers";
-import "./Followers.scss";
+import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_FOLLOWERS, GET_FOLLOWEDS } from 'gql/follow';
+import { size } from 'lodash';
+import ModalBasic from 'components/Modal/ModalBasic';
+import ListUsers from 'components/User/ListUsers';
+import './Followers.scss';
 
 export default function Follow({ username, totalPublications }) {
   const [showModal, setShowModal] = useState(false);
-  const [titleModal, setTitleModal] = useState("");
+  const [titleModal, setTitleModal] = useState('');
   const [childrenModal, setChildrenModal] = useState(null);
 
   const {
@@ -51,33 +51,33 @@ export default function Follow({ username, totalPublications }) {
 
   const openFollowers = () => {
     setShowModal(true);
-    setTitleModal("Seguidores");
+    setTitleModal('Seguidores');
     setChildrenModal(
-      <ListUsers users={getFollowers} setShowModal={setShowModal} />
+      <ListUsers users={getFollowers} setShowModal={setShowModal} />,
     );
   };
 
   const openFolloweds = () => {
     setShowModal(true);
-    setTitleModal("seguidos");
+    setTitleModal('seguidos');
     setChildrenModal(
-      <ListUsers users={getFolloweds} setShowModal={setShowModal} />
+      <ListUsers users={getFolloweds} setShowModal={setShowModal} />,
     );
   };
 
   return (
     <>
-      <div className="followers">
+      <div className='followers'>
         <p>
-          {" "}
+          {' '}
           <span>{totalPublications}</span> publicaciones
         </p>
-        <p className="link" onClick={openFollowers}>
-          {" "}
+        <p className='link' onClick={openFollowers}>
+          {' '}
           <span>{size(getFollowers)}</span> seguidores
         </p>
-        <p className="link" onClick={openFolloweds}>
-          {" "}
+        <p className='link' onClick={openFolloweds}>
+          {' '}
           <span>{size(getFolloweds)}</span> seguidos
         </p>
       </div>

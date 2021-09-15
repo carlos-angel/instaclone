@@ -1,18 +1,18 @@
-@import "../../../../scss/index.scss";
+@import 'scss/index.scss';
 
-.comment-form{
+.comment-form {
   position: absolute !important;
   bottom: 0;
   display: flex;
   width: 100%;
 
-  .field{
+  .field {
     margin: 0 !important;
     width: 100%;
 
-    .ui.input{
+    .ui.input {
       height: 60px;
-      input{
+      input {
         border: 0;
         border-top: 1px solid $border-grey;
         border-radius: 0;
@@ -29,7 +29,7 @@
     height: 100%;
   }
 
-  &:hover{
+  &:hover {
     background-color: transparent;
   }
 }

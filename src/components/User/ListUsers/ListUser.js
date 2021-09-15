@@ -1,9 +1,9 @@
-import React from "react";
-import { Image } from "semantic-ui-react";
-import { useHistory } from "react-router-dom";
-import { size, map } from "lodash";
-import avatarNotFound from "../../../assets/png/avatar.png";
-import "./ListUser.scss";
+import React from 'react';
+import { Image } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
+import { size, map } from 'lodash';
+import avatarNotFound from 'assets/png/avatar.png';
+import './ListUser.scss';
 
 export default function ListUser({ users, setShowModal }) {
   const history = useHistory();
@@ -14,14 +14,14 @@ export default function ListUser({ users, setShowModal }) {
   };
 
   return (
-    <div className="list-users">
+    <div className='list-users'>
       {size(users) === 0 ? (
-        <p className="list-users__not-users">No se han encontrado usuarios</p>
+        <p className='list-users__not-users'>No se han encontrado usuarios</p>
       ) : (
         map(users, (user, index) => (
           <div
             key={index}
-            className="list-users__user"
+            className='list-users__user'
             onClick={() => goToUser(user.username)}
           >
             <Image src={user.avatar || avatarNotFound} avatar />

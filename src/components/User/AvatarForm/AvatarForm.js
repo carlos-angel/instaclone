@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { UPDATE_AVATAR, GET_USER, DELETE_AVATAR } from '../../../gql/user';
+import { UPDATE_AVATAR, GET_USER, DELETE_AVATAR } from 'gql/user';
 import { Button } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { useDropzone } from 'react-dropzone';

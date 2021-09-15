@@ -1,6 +1,6 @@
-@import "../../../../scss/index.scss";
+@import 'scss/index.scss';
 
-.actions{
+.actions {
   height: 40px;
   display: flex;
   align-items: center;
@@ -9,12 +9,12 @@
   i {
     font-size: 16px !important;
 
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
   }
 
-  .like.active{
+  .like.active {
     color: $danger;
   }
 }

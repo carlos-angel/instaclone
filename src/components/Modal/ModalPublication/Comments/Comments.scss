@@ -1,24 +1,24 @@
-@import "../../../../scss/index.scss";
+@import 'scss/index.scss';
 
-.comments{
+.comments {
   height: calc(100% - 100px);
-  overflow-y:scroll;
+  overflow-y: scroll;
 
-  .comment{
+  .comment {
     display: flex;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid $border-grey;
     color: $font-dark;
 
-    img{
+    img {
       margin-right: 15px !important;
     }
 
-    p{
+    p {
       margin: 0;
 
-      &:first-of-type{
+      &:first-of-type {
         font-weight: bold;
       }
     }

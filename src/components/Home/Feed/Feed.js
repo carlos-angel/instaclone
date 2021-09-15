@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Image } from "semantic-ui-react";
-import { map } from "lodash";
-import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_PUBLICATIONS_FOLLOWEDS } from "../../../gql/publication";
-import CommentForm from "../../Modal/ModalPublication/CommentForm";
-import Actions from "../../Modal/ModalPublication/Actions";
-import ModalPublication from "../../Modal/ModalPublication";
-import ImageNotFound from "../../../assets/png/avatar.png";
-import "./Feed.scss";
+import React, { useState, useEffect } from 'react';
+import { Image } from 'semantic-ui-react';
+import { map } from 'lodash';
+import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_PUBLICATIONS_FOLLOWEDS } from 'gql/publication';
+import CommentForm from 'components/Modal/ModalPublication/CommentForm';
+import Actions from 'components/Modal/ModalPublication/Actions';
+import ModalPublication from 'components/Modal/ModalPublication';
+import ImageNotFound from 'assets/png/avatar.png';
+import './Feed.scss';
 
 export default function Feed() {
   const [showModal, setShowModal] = useState(false);
   const [publicationSelect, setPublicationSelect] = useState(false);
   const { data, loading, startPolling, stopPolling } = useQuery(
-    GET_PUBLICATIONS_FOLLOWEDS
+    GET_PUBLICATIONS_FOLLOWEDS,
   );
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Feed() {
     return null;
   }
 
-  const openPublication = publication => {
+  const openPublication = (publication) => {
     setPublicationSelect(publication);
     setShowModal(true);
   };
@@ -34,12 +34,12 @@ export default function Feed() {
 
   return (
     <>
-      <div className="feed">
+      <div className='feed'>
         {map(getPublicationsFolloweds, (publication, index) => {
           return (
-            <div key={index} className="feed__box">
+            <div key={index} className='feed__box'>
               <Link to={`/${publication.idUser.username}`}>
-                <div className="feed__box-user">
+                <div className='feed__box-user'>
                   <Image
                     src={publication.idUser.avatar || ImageNotFound}
                     avatar
@@ -48,14 +48,14 @@ export default function Feed() {
                 </div>
               </Link>
               <div
-                className="feed__box-photo"
+                className='feed__box-photo'
                 style={{ backgroundImage: `url("${publication.file}")` }}
                 onClick={() => openPublication(publication)}
               />
-              <div className="feed__box-actions">
+              <div className='feed__box-actions'>
                 <Actions publication={publication} />
               </div>
-              <div className="feed__box-form">
+              <div className='feed__box-form'>
                 <CommentForm publication={publication} />
               </div>
             </div>
